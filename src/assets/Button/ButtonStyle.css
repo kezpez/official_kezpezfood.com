@@ -1,0 +1,31 @@
+.button-instance-pink {
+  background-color: #FF5D48; /* Soft pink background */
+  border: 1px solid #FFEDE8; /* Stroke color */
+  color: #FFEDE8; /* Text color */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-instance-pink:hover {
+  background-color: #FFEDE8;
+  border: 1px solid #FF5D48; /* Stroke color */
+  color: #FF5D48;
+}
+
+.location-pin{
+  height: 52px;
+  position: relation;
+  width: 44px;
+}
+
+.location-pin .vector{
+  height: 18px;
+  left: 21px;
+  position: absolute;
+  top: 14px;
+  width: 11px;
+}
