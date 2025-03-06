@@ -32,9 +32,9 @@ function App() {
       <Routes> 
         {/* make routes lowercase add - */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/Cities" element={<Cities />} />
-        <Route path="/ResultsPage" element={<ResultsPage />} />
-        <Route path="/TravelGuide" element={<TravelGuide />} />
+        <Route path="/cities" element={<Cities />} />
+        <Route path="/results" element={<ResultsPage />} />
+        <Route path="/travel-guide" element={<TravelGuide />} />
       </Routes>
     {/* </Router> */}
     </BrowserRouter>

@@ -20,10 +20,18 @@ import la from "../assets/Images/la.jpg";
 
 export default function HomePage(){
     const[cuisine, setCuisine] = useState("");
+    const [city, setCity] = useState("");
+    const [district, setDistrict] = useState("");
+    const [price, setPrice] = useState("");
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        navigate(`/ResultsPage?cuisine=${cuisine}`);
+            // Making the search query dynamically based on filters
+        let query = `/results?cuisine=${cuisine}`;
+            if (city) query += `&city=${city}`;
+            if (district) query += `&district=${district}`;
+            if (price) query += `&price=${price}`;
+        navigate(query);
     };
     return (
         <div className="page"
@@ -56,6 +64,21 @@ export default function HomePage(){
                             <option value="Dessert">Dessert</option>
                             <option value="Italian">Italian</option>
                             <option value="Korean">Korean</option>
+                        </select>
+                        <select value={city} onChange={(e) => setCity(e.target.value)}>
+                            <option value="">Select city</option>
+                            <option value="LA">LA</option>
+                            <option value="NYC">NYC</option>
+                        </select>
+                        <select value={district} onChange={(e) => setDistrict(e.target.value)}>
+                            <option value="">Select district</option>
+                            <option value="Koreatown">Koreatown</option>
+                        </select>
+                        <select value={price} onChange={(e) => setPrice(e.target.value)}>
+                            <option value="">Select price</option>
+                            <option value="$">$</option>
+                            <option value="$$">$$</option>
+                            <option value="$$$">$$$</option>
                         </select>
                         <Button className="button-instance-pink" text="Find Restaurant" onClick={handleSearch}/>
             </div>
