@@ -29,7 +29,8 @@ function App() {
     <BrowserRouter>
     {/* <Router> */}
       <Nav />
-      <Routes>
+      <Routes> 
+        {/* make routes lowercase add - */}
         <Route path="/" element={<HomePage />} />
         <Route path="/Cities" element={<Cities />} />
         <Route path="/ResultsPage" element={<ResultsPage />} />
