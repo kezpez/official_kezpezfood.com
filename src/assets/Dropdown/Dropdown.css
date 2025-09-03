@@ -1,0 +1,45 @@
+.dropdown-itinerary {
+    margin: 16px 0;
+    border-radius: 20px;
+    background-color: #fff1f1;
+    padding: 20px;
+    border: 1px solid var(--main-red); /* <-- add this */
+}
+
+.title-header {
+    font-weight: bold;
+    font-size: 18px;
+    background: none;
+    cursor: pointer;
+    /* margin-bottom: 16px; */
+    text-align: left;
+    color: var(--main-red);
+}
+
+.columns-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.column-block {
+    flex: 1;
+    min-width: 200px;
+}
+
+.column-block h4 {
+    margin-bottom: 8px;
+}
+
+.column-block ul {
+    padding-left: 16px;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .column-grid {
+        flex-wrap: none;
+        flex-direction: column;
+    }
+}
