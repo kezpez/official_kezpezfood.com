@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
+import { storageImage } from '../../../storageImage'
 import { useNavigate } from 'react-router-dom'
-import background_image_nyc from '../../../assets/Images/nyc-image.png'
+import background_image_nyc from '../../../assets/Images/nyc-image.jpg'
 import Dropdown from '../../../assets/Dropdown/Dropdown'
 import GoogleMaps from '../../../google_maps/GoogleMaps'
 import { supabase } from '../../../supabaseClient'
@@ -46,9 +47,7 @@ export default function NYCFood() {
     const mapRestaurantToDropdownItem = (r) => ({
         title: r.name, // your Supabase column
         caption: r.rating, // whatever field makes sense
-        image: r.images
-            ? `https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/${r.images}.jpg`
-            : null,
+        image: r.images ? storageImage(r.images) : null,
         food_type: r.food_type,
         lat: r.lat,
         lng: r.lng,

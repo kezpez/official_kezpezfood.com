@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { storageImage } from '../storageImage'
 import { Button } from '../assets/Button/Button'
 // import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 // import { Footer } from "../assets/Footer";
 // import Nav from "../assets/Nav";// import { IconComponentNode } from "./IconComponentNode";
 // import backgroundImage from '../assets/section-home.jpg'
-import backgroundImage from '../assets/banner_photo_5.png'
+import backgroundImage from '../assets/banner_photo_5.jpg'
 import Reels from '../reels/reels' // adjust path if needed
 
 import '../App.css'
@@ -246,7 +247,7 @@ export default function HomePage() {
                                     <img
                                         className="img"
                                         src={
-                                            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/nyc/konban_1.jpg'
+                                            storageImage('nyc/konban_1.jpg')
                                         }
                                         alt="Konban"
                                     />
@@ -264,7 +265,7 @@ export default function HomePage() {
                                     <img
                                         className="img"
                                         src={
-                                            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/la/kanomwaan.jpg'
+                                            storageImage('la/kanomwaan.jpg')
                                         }
                                         alt="Kanomwaan"
                                     />
@@ -282,7 +283,7 @@ export default function HomePage() {
                                     <img
                                         className="img"
                                         src={
-                                            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/nyc/sorate_2.jpg'
+                                            storageImage('nyc/sorate_2.jpg')
                                         }
                                         alt="Sorate"
                                     />
@@ -324,7 +325,7 @@ export default function HomePage() {
                         <div className="guide-card">
                             <Link to="/travel-guide/nyc">
                                 <img
-                                    src="https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/nyc.jpg"
+                                    src={storageImage('nyc.jpg')}
                                     alt="NYC guide"
                                 />
                                 <div className="div-title">
@@ -338,7 +339,7 @@ export default function HomePage() {
                         </div>
                         <div className="guide-card">
                             <img
-                                src="https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/singapore.jpg"
+                                src={storageImage('singapore.jpg')}
                                 alt="Singapore guide"
                             />
                             <div className="div-title">

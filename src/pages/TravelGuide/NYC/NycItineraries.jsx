@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Dropdown from '../../../assets/Dropdown/Dropdown'
 import { useNavigate } from 'react-router-dom'
-import background_image_nyc from '../../../assets/Images/nyc-image.png'
+import background_image_nyc from '../../../assets/Images/nyc-image.jpg'
 
 export default function NYCItineraries() {
     const navigate = useNavigate()

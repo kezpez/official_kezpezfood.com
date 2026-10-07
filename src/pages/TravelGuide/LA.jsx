@@ -1,4 +1,5 @@
 import background_image_la from '../../assets/Images/la.jpg'
+import { storageImage } from '../../storageImage'
 import pink_pizza_icon from '../../assets/Icons/pink_pizza_icon.png'
 import pink_building_icon from '../../assets/Icons/pink_building_icon.png'
 import pink_calendar_icon from '../../assets/Icons/pink_calendar_icon.png'
@@ -111,7 +112,7 @@ export default function LA() {
                             <div
                                 className="image-cover"
                                 style={{
-                                    backgroundImage: `url('https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/la/yeems_1.jpg')`,
+                                    backgroundImage: `url('${storageImage('la/yeems_1.jpg')}')`,
                                 }}
                             >
                                 <div className="div-caption">
@@ -124,7 +125,7 @@ export default function LA() {
                             <div
                                 className="image-cover"
                                 style={{
-                                    backgroundImage: `url('https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/la/snd_1.jpg')`,
+                                    backgroundImage: `url('${storageImage('la/snd_1.jpg')}')`,
                                 }}
                             >
                                 <div className="div-caption">

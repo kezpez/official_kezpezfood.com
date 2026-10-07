@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { storageImage } from '../../../storageImage'
 import { useNavigate } from 'react-router-dom'
 import background_image_la from '../../../assets/Images/la.jpg'
 import Dropdown from '../../../assets/Dropdown/Dropdown'
@@ -46,9 +47,7 @@ export default function LAFood() {
     const mapRestaurantToDropdownItem = (r) => ({
         title: r.name, // your Supabase column
         caption: r.rating, // whatever field makes sense
-        image: r.images
-            ? `https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/${r.images}.jpg`
-            : null,
+        image: r.images ? storageImage(r.images) : null,
         lat: r.lat,
         lng: r.lng,
         ...r, // keep all other fields in case you need them

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { storageImage } from '../storageImage'
 import { supabase } from '../supabaseClient' // adjust path
 
 export default function Reels() {
@@ -33,11 +34,7 @@ export default function Reels() {
                 >
                     <img
                         className="img"
-                        src={
-                            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/' +
-                            reel.images +
-                            '.jpg'
-                        }
+                        src={storageImage(reel.images)}
                         alt={reel.name}
                     />
                     <div className="div-reel-caption">

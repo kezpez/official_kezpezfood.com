@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { storageImage } from '../../storageImage'
 import './Dropdown.css'
 import la from '../../assets/Images/la.jpg'
 
@@ -29,8 +30,11 @@ export default function Dropdown({ title, columns, onItemClick }) {
                                         {item.image && (
                                             <img
                                                 className="card-item-image"
-                                                src={`https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/${item.image}.jpg`}
+                                                src={storageImage(item.image)}
                                                 alt={item.name}
+                                                onError={(e) => {
+                                                    e.target.src = la // fallback if the image is missing
+                                                }}
                                             />
                                         )}
                                         <div className="card-text-content">

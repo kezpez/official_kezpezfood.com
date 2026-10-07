@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { storageImage } from '../../../storageImage'
 import { useNavigate } from 'react-router-dom'
 import background_image_la from '../../../assets/Images/la.jpg'
 
@@ -21,16 +22,11 @@ export default function LASee() {
         justifyContent: 'flex-start',
     }
     const images = {
-        getty_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/getty_1.jpg',
-        santa_monica_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/santa_monica_1.jpg',
-        griffith_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/griffith_1.jpg',
-        broad_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/broad_1.jpg',
-        lacma_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/lacma_1.jpg',
+        getty_1: storageImage('sightings/getty_1.jpg'),
+        santa_monica_1: storageImage('sightings/santa_monica_1.jpg'),
+        griffith_1: storageImage('sightings/griffith_1.jpg'),
+        broad_1: storageImage('sightings/broad_1.jpg'),
+        lacma_1: storageImage('sightings/lacma_1.jpg'),
     }
 
     return (

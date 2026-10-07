@@ -1,4 +1,5 @@
-import background_image_nyc from '../../assets/Images/background_image_nyc.png'
+import background_image_nyc from '../../assets/Images/background_image_nyc.jpg'
+import { storageImage } from '../../storageImage'
 import pink_pizza_icon from '../../assets/Icons/pink_pizza_icon.png'
 import pink_building_icon from '../../assets/Icons/pink_building_icon.png'
 import pink_calendar_icon from '../../assets/Icons/pink_calendar_icon.png'
@@ -118,7 +119,7 @@ export default function NYC() {
                             <div
                                 className="image-cover"
                                 style={{
-                                    backgroundImage: `url('https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/nyc/apollo_bagel_1.jpg')`,
+                                    backgroundImage: `url('${storageImage('nyc/apollo_bagel_1.jpg')}')`,
                                 }}
                             >
                                 <div className="div-caption">
@@ -133,7 +134,7 @@ export default function NYC() {
                             <div
                                 className="image-cover"
                                 style={{
-                                    backgroundImage: `url('https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/nyc/grand_st_pizza_1.jpg')`,
+                                    backgroundImage: `url('${storageImage('nyc/grand_st_pizza_1.jpg')}')`,
                                 }}
                             >
                                 <div className="div-caption">

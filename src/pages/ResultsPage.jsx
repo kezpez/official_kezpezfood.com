@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { storageImage } from '../storageImage'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '../supabaseClient' // Adjust the path if necessary
 import la from '../assets/Images/la.jpg'
@@ -92,7 +93,9 @@ export default function ResultsPage() {
                                     <div className="rest-card-content">
                                         <img
                                             className="rest-card-image"
-                                            src={`https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/${restaurant.images}.jpg`}
+                                            src={storageImage(
+                                                restaurant.images
+                                            )}
                                             alt={`${restaurant.name}`}
                                             onError={(e) => {
                                                 e.target.src = la // fallback image if the restaurant image is missing

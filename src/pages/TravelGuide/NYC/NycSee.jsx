@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { storageImage } from '../../../storageImage'
 import { useNavigate } from 'react-router-dom'
-import background_image_nyc from '../../../assets/Images/nyc-image.png'
+import background_image_nyc from '../../../assets/Images/nyc-image.jpg'
 
 export default function NYCSee() {
     const navigate = useNavigate()
@@ -21,13 +22,11 @@ export default function NYCSee() {
         justifyContent: 'flex-start',
     }
     const images = {
-        statue_liberty_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/statue_liberty_1.png',
-        central_park_1:
-            'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/central_park_1.jpg',
-        met_1: 'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/met_1.jpg',
-        moma_1: 'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/moma_1.jpg',
-        mnh_1: 'https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/sightings/mnh_1.jpg',
+        statue_liberty_1: storageImage('sightings/statue_liberty_1.png'),
+        central_park_1: storageImage('sightings/central_park_1.jpg'),
+        met_1: storageImage('sightings/met_1.jpg'),
+        moma_1: storageImage('sightings/moma_1.jpg'),
+        mnh_1: storageImage('sightings/mnh_1.jpg'),
     }
 
     return (
