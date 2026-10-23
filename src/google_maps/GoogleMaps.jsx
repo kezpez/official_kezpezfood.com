@@ -1,69 +1,84 @@
-import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react'
+import {
+    useEffect,
+    useRef,
+    useState,
+    forwardRef,
+    useImperativeHandle,
+} from 'react'
+import loadGoogleMaps from './LoadGoogleMaps'
+
+// Supabase can return numeric/text columns as strings ("40.71"),
+// and Google Maps only accepts real numbers.
+const toLatLng = (r) => {
+    const lat = Number(r?.lat)
+    const lng = Number(r?.lng)
+    return Number.isFinite(lat) && Number.isFinite(lng) && (lat || lng)
+        ? { lat, lng }
+        : null
+}
 
 const GoogleMaps = forwardRef(({ restaurants, apiKey }, ref) => {
     const mapRef = useRef(null)
     const mapInstance = useRef(null)
     const markersRef = useRef([])
+    // State (not just a ref) so the marker effect re-runs once the map exists
+    const [mapReady, setMapReady] = useState(false)
 
     // Expose panToRestaurant to parent via ref
     useImperativeHandle(ref, () => ({
         panToRestaurant: (restaurant, zoomLevel = 15) => {
-            if (!mapInstance.current || !restaurant.lat || !restaurant.lng)
-                return
-            mapInstance.current.panTo({
-                lat: restaurant.lat,
-                lng: restaurant.lng,
-            })
+            const pos = toLatLng(restaurant)
+            if (!mapInstance.current || !pos) return
+            mapInstance.current.panTo(pos)
             mapInstance.current.setZoom(zoomLevel)
         },
     }))
 
-    // Load Google Maps API
+    // Load the API (once) and create the map for this component
     useEffect(() => {
-        if (window.google && window.google.maps) return // Already loaded
+        let cancelled = false
 
-        const script = document.createElement('script')
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`
-        script.async = true
-        script.defer = true
-        document.body.appendChild(script)
-
-        script.onload = () => {
-            if (window.google && window.google.maps) {
-                mapInstance.current = new window.google.maps.Map(
-                    mapRef.current,
-                    {
-                        center: { lat: 40.7128, lng: -74.006 }, // default NYC center
-                        zoom: 12,
-                    }
-                )
-            }
-        }
+        loadGoogleMaps(apiKey)
+            .then((maps) => {
+                if (cancelled || !mapRef.current) return
+                mapInstance.current = new maps.Map(mapRef.current, {
+                    center: { lat: 40.7128, lng: -74.006 }, // default NYC center
+                    zoom: 12,
+                })
+                setMapReady(true)
+            })
+            .catch((err) => console.error(err))
 
         return () => {
-            document.body.removeChild(script)
+            cancelled = true
         }
     }, [apiKey])
 
-    // Update markers when restaurants change
+    // Draw markers whenever the data changes OR the map becomes ready
     useEffect(() => {
-        if (!mapInstance.current || !restaurants) return
+        if (!mapReady || !mapInstance.current) return
+        const maps = window.google.maps
 
-        // Clear old markers
         markersRef.current.forEach((m) => m.setMap(null))
         markersRef.current = []
+        ;(restaurants || []).forEach((restaurant) => {
+            const position = toLatLng(restaurant)
+            if (!position) {
+                console.warn(
+                    'Restaurant has no valid lat/lng:',
+                    restaurant.name
+                )
+                return
+            }
 
-        restaurants.forEach((restaurant) => {
-            if (!restaurant.lat || !restaurant.lng) return
-
-            const marker = new window.google.maps.Marker({
-                position: { lat: restaurant.lat, lng: restaurant.lng },
+            const marker = new maps.Marker({
+                position,
                 map: mapInstance.current,
                 title: restaurant.name,
             })
 
             marker.addListener('click', () => {
-                mapInstance.current.panTo(marker.getPosition())
+                mapInstance.current.panTo(position)
                 mapInstance.current.setZoom(15)
             })
 
@@ -71,14 +86,19 @@ const GoogleMaps = forwardRef(({ restaurants, apiKey }, ref) => {
         })
 
         // Fit map to all markers
-        if (markersRef.current.length > 0) {
-            const bounds = new window.google.maps.LatLngBounds()
+        if (markersRef.current.length === 1) {
+            mapInstance.current.setCenter(markersRef.current[0].getPosition())
+            mapInstance.current.setZoom(15)
+        } else if (markersRef.current.length > 1) {
+            const bounds = new maps.LatLngBounds()
             markersRef.current.forEach((m) => bounds.extend(m.getPosition()))
             mapInstance.current.fitBounds(bounds)
         }
-    }, [restaurants])
+    }, [restaurants, mapReady])
 
     return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
 })
+
+GoogleMaps.displayName = 'GoogleMaps'
 
 export default GoogleMaps

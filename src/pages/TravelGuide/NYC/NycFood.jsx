@@ -31,7 +31,7 @@ export default function NYCFood() {
             const { data, error } = await supabase
                 .from('restaurants')
                 .select('*')
-                .eq('city', 'nyc')
+                .ilike('city', 'nyc')
 
             if (error) {
                 console.error(error)
