@@ -34,7 +34,9 @@
     font-family: 'Asap', Helvetica;
     padding: 0px 0px 0px 50px;
 }
-.nav-menu a:hover {
+.nav-menu a:hover,
+.nav-menu .dropdown-label:hover,
+.nav-menu .dropdown-label.open {
     color: var(--main-green);
 }
 .nav-menu li {

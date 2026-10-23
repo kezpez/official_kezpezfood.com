@@ -196,7 +196,7 @@
     align-items: flex-start;
     text-align: left;
     gap: 2px;
-    background: var(--superlight-green);
+    background: var(--light-green);
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 8px 12px;

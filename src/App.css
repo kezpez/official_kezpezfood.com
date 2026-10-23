@@ -11,8 +11,8 @@
 
 :root {
     --white: #fff;
-    --superlight-green: #e7f8f1;
-    --light-green: #a7d8c5;
+    --light-green: #e7f8f1;
+    --mint-green: #a7d8c5;
     --accent-sage: #bbcaaa;
     --light-peach: #f7dfc2;
     --main-green: #58957e;
@@ -584,54 +584,56 @@ a {
     justify-content: center; /* Centers everything */
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: white;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-sizing: border-box;
+    padding: 60px 0;
 }
 
 .container-bio {
     display: flex;
-    flex-direction: row; /* Ensures items are side by side */
-    align-items: center; /* Align image and text vertically */
-    justify-content: center; /* Center content horizontally */
-    max-width: 1200px; /* Prevents stretching too wide */
+    flex-direction: row; /* Photo and text side by side */
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    gap: 40px;
-    flex-wrap: nowrap; /* Prevents stacking */
+    box-sizing: border-box;
+    /* Keeps the photo away from the screen edge as the window narrows */
+    padding: 0 clamp(20px, 5vw, 80px);
+    gap: clamp(24px, 4vw, 60px);
 }
 
 .circular-image {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 0px;
-    flex: 1; /* Ensures equal width distribution */
+    align-items: center;
+    flex: 0 0 auto; /* never squeezed; the text column flexes instead */
 }
 
 .circular-image img {
-    width: 300px; /* Adjust as needed */
-    height: 300px;
+    /* Scales with the window, between 160px and 360px */
+    width: clamp(160px, 24vw, 360px);
+    aspect-ratio: 1 / 1;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
+    display: block;
+}
+
+/* Bio text: 60% of the display width, flexes with the window */
+.container-bio .div-title {
+    flex: 0 1 60vw;
+    width: 60vw;
+    min-width: 0;
 }
 
 .div-bio {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 1; /* Makes sure text takes equal space */
+    flex: 1;
     text-align: left;
     gap: 20px;
-}
-
-.circular-image img {
-    width: 400px; /* Adjust size as needed */
-    height: 400px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .section-about-me .container .div-bio {
@@ -664,10 +666,10 @@ a {
     gap: 30px;
     display: flex;
     flex-direction: column;
+    /* Same height as the map: fills the section and grows/shrinks with the window */
+    height: 100%;
+    box-sizing: border-box;
     overflow-y: auto;
-    /* padding-top: 20px; */
-    max-height: 700px;
-    overflow-y: scroll;
     padding-right: 20px;
     margin-right: 40px;
     padding-bottom: 40px;
@@ -824,7 +826,7 @@ a {
 
 .circular-frame {
     align-items: center;
-    background-color: var(--superlight-green);
+    background-color: var(--light-green);
     border-radius: 32px;
     display: flex;
     gap: 10px;
@@ -870,7 +872,7 @@ a {
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color: var(--superlight-green);
+    background-color: var(--light-green);
     border: 1px solid;
     border-color: var(--main-green);
     border-radius: 10px;
@@ -1034,7 +1036,7 @@ a {
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color: var(--superlight-green);
+    background-color: var(--light-green);
     border: 1px solid;
     border-color: var(--main-green);
     border-radius: 10px;
@@ -1125,13 +1127,13 @@ a {
 }
 
 .tab.active {
-    background-color: var(--superlight-green);
+    background-color: var(--light-green);
     color: var(--main-green);
     border-color: var(--main-green);
 }
 
 .trip-description {
-    background-color: var(--light-peach);
+    background-color: var(--light-green);
     border-radius: 20px;
     padding: 24px;
     text-align: center;
@@ -1334,6 +1336,14 @@ a {
         margin-right: 0;
     }
     .section-map-sidebar .div-dropdown {
+        width: 100%;
+    }
+    .container-bio {
+        flex-direction: column;
+        text-align: center;
+    }
+    .container-bio .div-title {
+        flex: none;
         width: 100%;
     }
     .section-head-nyc-guide .div-title {
