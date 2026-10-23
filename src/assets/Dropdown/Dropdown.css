@@ -1,9 +1,9 @@
 .dropdown-itinerary {
     margin: 16px 0;
     border-radius: 20px;
-    background-color: #fff1f1;
+    background-color: var(--light-peach);
     padding: 20px;
-    border: 1px solid var(--main-red); /* <-- add this */
+    border: 1px solid var(--main-green); /* <-- add this */
 }
 
 .title-header {
@@ -13,7 +13,7 @@
     cursor: pointer;
     /* margin-bottom: 16px; */
     text-align: left;
-    color: var(--main-red);
+    color: var(--main-green);
 }
 
 .columns-grid {

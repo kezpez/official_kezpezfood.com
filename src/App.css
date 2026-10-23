@@ -11,9 +11,11 @@
 
 :root {
     --white: #fff;
-    --superlight-pink: rgb(255, 237, 232, 1);
-    --light-pink: #fba2a2;
-    --main-red: rgb(255, 93, 72, 1);
+    --superlight-green: #e7f8f1;
+    --light-green: #a7d8c5;
+    --accent-sage: #bbcaaa;
+    --light-peach: #f7dfc2;
+    --main-green: #58957e;
     justify-content: flex-start;
     --h5-color: black;
     --h5-font-family: 'Asap', Helvetica, sans-serif;
@@ -308,7 +310,7 @@ h5 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: #FFDDDD; */
+    /* background-color: #A7D8C5; */
     border-radius: 0px 40px 40px 0px;
     padding: 0px 0px 0px 50px;
     width: 30vw; /* 40% width */
@@ -510,7 +512,7 @@ a {
 .section-travel-guide {
     width: 100vw;
     overflow-x: hidden;
-    background-color: #fff3f3;
+    background-color: var(--light-peach);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -822,7 +824,7 @@ a {
 
 .circular-frame {
     align-items: center;
-    background-color: var(--superlight-pink);
+    background-color: var(--superlight-green);
     border-radius: 32px;
     display: flex;
     gap: 10px;
@@ -868,9 +870,9 @@ a {
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color: var(--superlight-pink);
+    background-color: var(--superlight-green);
     border: 1px solid;
-    border-color: var(--main-red);
+    border-color: var(--main-green);
     border-radius: 10px;
     flex-direction: row;
     gap: 10px;
@@ -1032,9 +1034,9 @@ a {
     display: flex;
     position: relative;
     justify-content: space-between;
-    background-color: var(--superlight-pink);
+    background-color: var(--superlight-green);
     border: 1px solid;
-    border-color: var(--main-red);
+    border-color: var(--main-green);
     border-radius: 10px;
     flex-direction: row;
     gap: 10px;
@@ -1060,7 +1062,7 @@ a {
 
 .it-card .h4-pink {
     align-self: stretch;
-    color: var(--main-red);
+    color: var(--main-green);
     font-family: 'Asap-Bold', Helvetica;
     font-size: 23.7px;
     font-weight: 700;
@@ -1123,13 +1125,13 @@ a {
 }
 
 .tab.active {
-    background-color: #ffecec;
-    color: var(--main-red);
-    border-color: var(--main-red);
+    background-color: var(--superlight-green);
+    color: var(--main-green);
+    border-color: var(--main-green);
 }
 
 .trip-description {
-    background-color: #ffecec;
+    background-color: var(--light-peach);
     border-radius: 20px;
     padding: 24px;
     text-align: center;
@@ -1153,7 +1155,7 @@ a {
     background: white;
     padding: 16px 20px;
     border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.1); /* subtle red glow */
+    box-shadow: 0px 4px 12px rgba(88, 149, 126, 0.15); /* subtle green glow */
     display: flex;
     align-items: flex-start;
     gap: 16px;
@@ -1175,7 +1177,7 @@ a {
     /* font-weight: 600;
     font-size: 16px;
     color: black; */
-    border-bottom: 1px solid #f4bcbc; /* soft pink underline */
+    border-bottom: 1px solid var(--accent-sage); /* soft sage underline */
     padding-bottom: 6px;
     margin-bottom: 10px;
     margin-top: 0px;
@@ -1352,7 +1354,7 @@ a {
     display: inline-block;
     margin-top: 8px;
     font-size: 14px;
-    color: var(--main-red);
+    color: var(--main-green);
     text-decoration: none;
 }
 .rest-card-maps-link:hover {
@@ -1363,5 +1365,5 @@ a {
     color: #1a1a1a;
 }
 .map-info-window a {
-    color: var(--main-red);
+    color: var(--main-green);
 }

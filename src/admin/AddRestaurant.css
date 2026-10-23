@@ -28,16 +28,16 @@
     gap: 8px;
 }
 .admin-tabs button {
-    border: 1px solid var(--main-red);
+    border: 1px solid var(--main-green);
     background: white;
-    color: var(--main-red);
+    color: var(--main-green);
     border-radius: 999px;
     padding: 8px 16px;
     font: inherit;
     cursor: pointer;
 }
 .admin-tabs button.active {
-    background: var(--main-red);
+    background: var(--main-green);
     color: white;
 }
 .admin-grid {
@@ -93,8 +93,8 @@
 .admin-page input:focus,
 .admin-page select:focus,
 .admin-page textarea:focus {
-    outline: 2px solid var(--light-pink);
-    border-color: var(--main-red);
+    outline: 2px solid var(--accent-sage);
+    border-color: var(--main-green);
 }
 .admin-search gmp-place-autocomplete {
     width: 100%;
@@ -115,7 +115,7 @@
     object-fit: cover;
 }
 .admin-btn {
-    background: var(--main-red);
+    background: var(--main-green);
     color: white;
     border: none;
     border-radius: 999px;
@@ -136,7 +136,7 @@
     background: none;
     border: none;
     padding: 0;
-    color: var(--main-red);
+    color: var(--main-green);
     font: inherit;
     cursor: pointer;
     text-decoration: underline;
@@ -196,7 +196,7 @@
     align-items: flex-start;
     text-align: left;
     gap: 2px;
-    background: var(--superlight-pink);
+    background: var(--superlight-green);
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 8px 12px;
@@ -206,7 +206,7 @@
     cursor: pointer;
 }
 .admin-matches button:hover {
-    border-color: var(--main-red);
+    border-color: var(--main-green);
 }
 .admin-matches span {
     color: #666;

@@ -1,7 +1,7 @@
 .footer {
     width: 100vw; /* full width */
     position: relative; /* normal flow */
-    background-color: var(--main-red);
+    background-color: var(--main-green);
     padding: 48px 100px;
     display: flex;
     flex-direction: column;
