@@ -14,7 +14,6 @@ import Reels from '../reels/reels' // adjust path if needed
 import '../App.css'
 import TravelGuide from '../pages/TravelGuide'
 import profile from '../assets/Images/profile.jpg'
-import la from '../assets/Images/la.jpg'
 import { Link } from 'react-router-dom' // if you're using React Router
 import { supabase } from '../supabaseClient' // Adjust the path if necessary
 
@@ -311,7 +310,10 @@ export default function HomePage() {
                     <div className="container-guide-cards">
                         <div className="guide-card">
                             <Link to="/travel-guide/la">
-                                <img src={la} alt="LA guide" />
+                                <img
+                                    alt="LA guide"
+                                    src="https://hloflmfcvktnfyumrivx.supabase.co/storage/v1/object/public/images/la.jpg"
+                                />
                                 <div className="div-title">
                                     <div className="h3-black">LOS ANGELES</div>
                                     <div className="p2-black">
