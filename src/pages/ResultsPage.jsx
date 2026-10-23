@@ -4,6 +4,7 @@ import { supabase } from '../supabaseClient' // Adjust the path if necessary
 import la from '../assets/Images/la.jpg'
 import '../App.css'
 import GoogleMaps from '../google_maps/GoogleMaps'
+import { googleMapsLink } from '../googleMapsLink'
 
 export default function ResultsPage() {
     const [searchParams] = useSearchParams()
@@ -71,7 +72,6 @@ export default function ResultsPage() {
         <div
             className="page"
             style={{
-                height: '1000px',
                 width: '100vw',
             }}
         >
@@ -134,6 +134,21 @@ export default function ResultsPage() {
                                                 <span>🌊 Casual</span>{' '}
                                                 <span>{restaurant.price}</span>
                                             </div>
+                                            {googleMapsLink(restaurant) && (
+                                                <a
+                                                    className="rest-card-maps-link"
+                                                    href={googleMapsLink(
+                                                        restaurant
+                                                    )}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    onClick={(e) =>
+                                                        e.stopPropagation()
+                                                    }
+                                                >
+                                                    Open in Google Maps ↗
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

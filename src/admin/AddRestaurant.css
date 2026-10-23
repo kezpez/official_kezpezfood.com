@@ -1,0 +1,229 @@
+.admin-page {
+    min-height: 100vh;
+    background: #fafafa;
+    color: #1a1a1a;
+    padding: 100px 40px 60px;
+    box-sizing: border-box;
+    font-family: 'Asap', Helvetica, sans-serif;
+    color-scheme: light;
+}
+.admin-page h1 {
+    font-size: 28px;
+    margin: 0 0 4px;
+}
+.admin-page h2 {
+    font-size: 18px;
+    margin: 0 0 16px;
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.admin-tabs {
+    display: flex;
+    gap: 8px;
+}
+.admin-tabs button {
+    border: 1px solid var(--main-red);
+    background: white;
+    color: var(--main-red);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font: inherit;
+    cursor: pointer;
+}
+.admin-tabs button.active {
+    background: var(--main-red);
+    color: white;
+}
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+.admin-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+.admin-signin {
+    max-width: 380px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.admin-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+.admin-fields .span-2 {
+    grid-column: span 2;
+}
+.admin-page label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.admin-page input,
+.admin-page select,
+.admin-page textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #1a1a1a;
+    width: 100%;
+    box-sizing: border-box;
+}
+.admin-page input:focus,
+.admin-page select:focus,
+.admin-page textarea:focus {
+    outline: 2px solid var(--light-pink);
+    border-color: var(--main-red);
+}
+.admin-search gmp-place-autocomplete {
+    width: 100%;
+    color-scheme: light;
+}
+.admin-map {
+    height: 320px;
+    margin-top: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #eee;
+}
+.admin-photo-preview {
+    max-height: 200px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.admin-btn {
+    background: var(--main-red);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.admin-btn.small {
+    padding: 6px 16px;
+    font-size: 14px;
+}
+.admin-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+.admin-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--main-red);
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.admin-muted {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+}
+.admin-error {
+    color: #c62828;
+    font-size: 14px;
+}
+.admin-warning {
+    background: #fff7e0;
+    border: 1px solid #f3d27a;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+.admin-ok {
+    color: #2e7d32;
+    font-weight: 600;
+}
+.admin-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.admin-link-list li {
+    border-top: 1px solid #eee;
+    padding: 12px 0;
+}
+.admin-link-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.admin-link-row > div {
+    flex: 1;
+}
+.admin-link-row img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.admin-matches {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 10px 0 0 60px;
+}
+.admin-matches button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 2px;
+    background: var(--superlight-pink);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 14px;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+.admin-matches button:hover {
+    border-color: var(--main-red);
+}
+.admin-matches span {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .admin-page {
+        padding: 90px 16px 40px;
+    }
+    .admin-grid,
+    .admin-fields {
+        grid-template-columns: 1fr;
+    }
+    .admin-fields .span-2 {
+        grid-column: auto;
+    }
+    .admin-matches {
+        margin-left: 0;
+    }
+}

@@ -650,7 +650,6 @@ a {
     flex-direction: column;
     box-sizing: border-box;
     overflow-x: hidden;
-    height: 100vh;
 }
 .container-results {
     display: flex;
@@ -985,7 +984,9 @@ a {
     display: flex;
     /* justify-content: flex-start; */
     /* gap: 50px; */
-    height: 100%; /* or calc(...) if you have a navbar */
+    /* Explicit height so the map has room; page grows around it */
+    height: 85vh;
+    min-height: 560px;
     overflow-wrap: break-word;
     word-wrap: break-word;
     box-sizing: border-box;
@@ -1017,7 +1018,7 @@ a {
     background-color: white;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-y: auto;
 }
 .container-itinerary {
     height: 100vh;
@@ -1202,8 +1203,7 @@ a {
 
 .section-dropdown {
     padding: 0px 100px 60px 100px;
-    position: absolute;
-    right: 0;
+    position: relative;
 
     box-sizing: border-box; /* ✅ ensures padding fits inside width */
     z-index: 10;
@@ -1315,6 +1315,21 @@ a {
     }
     .section-map-sidebar {
         flex-direction: column;
+        height: auto;
+        min-height: 0;
+        padding: 20px;
+    }
+    .section-map-sidebar .map {
+        flex: none;
+        height: 60vh;
+        min-height: 320px;
+    }
+    .section-map-sidebar .sidebar,
+    .section-map-sidebar .results-list {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        margin-right: 0;
     }
     .section-map-sidebar .div-dropdown {
         width: 100%;
@@ -1331,4 +1346,22 @@ a {
     .container-hacks {
         width: 100%;
     }
+}
+
+.rest-card-maps-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--main-red);
+    text-decoration: none;
+}
+.rest-card-maps-link:hover {
+    text-decoration: underline;
+}
+.map-info-window {
+    font-family: 'Asap', Helvetica, sans-serif;
+    color: #1a1a1a;
+}
+.map-info-window a {
+    color: var(--main-red);
 }

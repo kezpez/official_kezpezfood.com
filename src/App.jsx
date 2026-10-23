@@ -17,6 +17,7 @@ import LASee from './pages/TravelGuide/LA/LASee'
 import LAFood from './pages/TravelGuide/LA/LAFood.jsx'
 
 import TopScroll from './TopScroll'
+import AddRestaurant from './admin/AddRestaurant'
 ;<script async src="//www.instagram.com/embed.js"></script>
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/results" element={<ResultsPage />} />
+                        <Route path="/admin" element={<AddRestaurant />} />
                         <Route path="/travel-guide" element={<TravelGuide />} />
                         <Route path="/travel-guide/nyc" element={<NYC />} />
                         <Route

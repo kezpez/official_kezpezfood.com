@@ -6,6 +6,7 @@ import {
     useImperativeHandle,
 } from 'react'
 import loadGoogleMaps from './LoadGoogleMaps'
+import { googleMapsLink } from '../googleMapsLink'
 
 // Supabase can return numeric/text columns as strings ("40.71"),
 // and Google Maps only accepts real numbers.
@@ -21,6 +22,7 @@ const GoogleMaps = forwardRef(({ restaurants, apiKey }, ref) => {
     const mapRef = useRef(null)
     const mapInstance = useRef(null)
     const markersRef = useRef([])
+    const infoRef = useRef(null)
     // State (not just a ref) so the marker effect re-runs once the map exists
     const [mapReady, setMapReady] = useState(false)
 
@@ -80,6 +82,29 @@ const GoogleMaps = forwardRef(({ restaurants, apiKey }, ref) => {
             marker.addListener('click', () => {
                 mapInstance.current.panTo(position)
                 mapInstance.current.setZoom(15)
+
+                // Small popup: name + link to the real Google Maps listing
+                const box = document.createElement('div')
+                box.className = 'map-info-window'
+                const title = document.createElement('b')
+                title.textContent = restaurant.name || ''
+                box.appendChild(title)
+                const href = googleMapsLink(restaurant)
+                if (href) {
+                    const a = document.createElement('a')
+                    a.href = href
+                    a.target = '_blank'
+                    a.rel = 'noreferrer'
+                    a.textContent = 'Open in Google Maps ↗'
+                    box.appendChild(document.createElement('br'))
+                    box.appendChild(a)
+                }
+                if (!infoRef.current) infoRef.current = new maps.InfoWindow()
+                infoRef.current.setContent(box)
+                infoRef.current.open({
+                    map: mapInstance.current,
+                    anchor: marker,
+                })
             })
 
             markersRef.current.push(marker)
