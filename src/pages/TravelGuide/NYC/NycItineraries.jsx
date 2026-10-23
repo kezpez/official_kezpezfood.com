@@ -158,13 +158,12 @@ export default function NYCItineraries() {
         <div
             className="itinerary-page"
             style={{
-                height: '100vh',
                 width: '100vw',
                 position: 'relative',
                 marginBottom: '200px',
             }}
         >
-            <div className="page" style={{ height: '100vh', width: '100vw' }}>
+            <div className="page" style={{ width: '100vw' }}>
                 <div className="short-header-image" style={sectionStyles}>
                     <div className="div-title-center">
                         <div className="nyc-title">NYC</div>

@@ -32,11 +32,10 @@ export default function NYC() {
         <div
             className="page"
             style={{
-                height: '4500px',
                 width: '100vw',
             }}
         >
-            <div className="page" style={{ height: '100vh', width: '100vw' }}>
+            <div className="page" style={{ width: '100vw' }}>
                 <div className="section-head-nyc-guide" style={sectionStyles}>
                     <div className="container">
                         <div className="div-title">

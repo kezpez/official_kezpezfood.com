@@ -31,11 +31,10 @@ export default function LA() {
         <div
             className="page"
             style={{
-                height: '3000px',
                 width: '100vw',
             }}
         >
-            <div className="page" style={{ height: '100vh', width: '100vw' }}>
+            <div className="page" style={{ width: '100vw' }}>
                 <div className="section-head-nyc-guide" style={sectionStyles}>
                     <div className="container">
                         <div className="div-title">

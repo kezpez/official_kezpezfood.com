@@ -37,7 +37,6 @@ export default function LASee() {
         <div
             className="itinerary-page"
             style={{
-                height: '4000px',
                 width: '100vw',
                 marginBottom: '200px',
             }}
