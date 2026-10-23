@@ -80,7 +80,7 @@ export default function HomePage() {
 
             // apply only non-empty filters
             if (cuisine) query = query.eq('cuisine', cuisine)
-            if (city) query = query.eq('city', city)
+            if (city) query = query.ilike('city', city)
             if (district) query = query.eq('district', district)
             if (price) query = query.eq('price', price) // <= watch DB type/values
 

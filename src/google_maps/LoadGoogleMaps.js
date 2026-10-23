@@ -1,25 +1,22 @@
-// // GoogleMaps.js
-// import { useEffect, useState } from 'react'
+// Loads the Google Maps JS API exactly once, no matter how many map
+// components mount (or how many times React StrictMode re-runs effects).
+let loaderPromise = null
 
-// export default function GoogleMaps() {
-//     const [loaded, setLoaded] = useState(false)
+export default function loadGoogleMaps(apiKey) {
+    if (window.google?.maps) return Promise.resolve(window.google.maps)
+    if (loaderPromise) return loaderPromise
 
-//     useEffect(() => {
-//         // If already loaded, skip
-//         if (window.google) {
-//             setLoaded(true)
-//             return
-//         }
+    loaderPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`
+        script.async = true
+        script.onload = () => resolve(window.google.maps)
+        script.onerror = () => {
+            loaderPromise = null // allow a retry on the next mount
+            reject(new Error('Google Maps failed to load – check the API key'))
+        }
+        document.head.appendChild(script)
+    })
 
-//         // Create script tag
-//         const script = document.createElement('script')
-//         script.src = `https://maps.googleapis.com/maps/api/js?key=${
-//             import.meta.env.VITE_GOOGLE_MAPS_KEY
-//         }`
-//         script.async = true
-//         script.onload = () => setLoaded(true)
-//         document.body.appendChild(script)
-//     }, [])
-
-//     return loaded
-// }
+    return loaderPromise
+}

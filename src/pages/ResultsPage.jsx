@@ -16,38 +16,52 @@ export default function ResultsPage() {
     const mapRef = useRef(null)
 
     const [restaurants, setRestaurants] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [errorMsg, setErrorMsg] = useState('')
 
     useEffect(() => {
+        const clean = (v) => (v ?? '').trim()
+
         const fetchRestaurants = async () => {
+            setLoading(true)
+            setErrorMsg('')
             console.log('Filters:', { cuisine, district, city, price })
 
             let query = supabase.from('restaurants').select('*')
 
-            if (cuisine && cuisine.trim() !== '') {
-                query = query.eq('cuisine', cuisine)
-            }
-            if (district && district.trim() !== '') {
-                query = query.eq('district', district)
-            }
-            if (city && city.trim() !== '') {
-                query = query.ilike('city', city)
-            }
-            if (price && price.trim() !== '') {
-                query = query.eq('price', price)
-            }
+            // ilike = case-insensitive. Cuisine uses %…% so "Korean BBQ" or
+            // "Korean, Japanese" still match a "Korean" search.
+            if (clean(cuisine))
+                query = query.ilike('cuisine', `%${clean(cuisine)}%`)
+            if (clean(district))
+                query = query.ilike('district', clean(district))
+            if (clean(city)) query = query.ilike('city', clean(city))
+            if (clean(price)) query = query.eq('price', clean(price))
 
             const { data, error } = await query
 
             if (error) {
                 console.error('Error fetching data:', error)
+                setErrorMsg(error.message)
+                setRestaurants([])
             } else {
                 console.log('Supabase Data:', data)
-                setRestaurants(data)
+                setRestaurants(data ?? [])
             }
+            setLoading(false)
         }
 
         fetchRestaurants()
     }, [cuisine, district, city, price])
+
+    const heading = [
+        'Restaurants',
+        cuisine && `for ${cuisine} food`,
+        (district || city) &&
+            `in ${[district, city].filter(Boolean).join(', ')}`,
+    ]
+        .filter(Boolean)
+        .join(' ')
 
     function formatCityName(city) {
         return city ? city.toLowerCase() : 'default_city'
@@ -63,13 +77,17 @@ export default function ResultsPage() {
         >
             <div className="section-results">
                 <div className="container-results">
-                    <div className="h2-black">
-                        Restaurants for {cuisine} Food in {district}, {city}
-                    </div>
+                    <div className="h2-black">{heading}</div>
                 </div>
                 <div className="section-map-sidebar">
                     <div className="results-list">
-                        {restaurants.length === 0 ? (
+                        {loading ? (
+                            <div className="p1-black">Loading…</div>
+                        ) : errorMsg ? (
+                            <div className="p1-black">
+                                Couldn't load restaurants: {errorMsg}
+                            </div>
+                        ) : restaurants.length === 0 ? (
                             <div className="p1-black">
                                 No restaurants found.
                             </div>
