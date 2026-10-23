@@ -1,7 +1,7 @@
 .dropdown-itinerary {
     margin: 16px 0;
     border-radius: 20px;
-    background-color: var(--light-peach);
+    background-color: var(--light-green);
     padding: 20px;
     border: 1px solid var(--main-green); /* <-- add this */
 }

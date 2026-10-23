@@ -1,5 +1,5 @@
 .button-instance-pink {
-    background-color: var(--superlight-green); /* Soft green background */
+    background-color: var(--light-green); /* Soft green background */
     border: 1px solid var(--main-green); /* Stroke color */
     color: var(--main-green); /* Text color */
     font-size: 16px;
@@ -12,8 +12,8 @@
 
 .button-instance-pink:hover {
     background-color: var(--main-green);
-    border: 1px solid var(--superlight-green); /* Stroke color */
-    color: var(--superlight-green);
+    border: 1px solid var(--light-green); /* Stroke color */
+    color: var(--light-green);
 }
 
 .location-pin {
