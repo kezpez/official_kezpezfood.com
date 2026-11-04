@@ -1493,6 +1493,35 @@ a {
     }
 }
 
+/* ---------- Results page: mobile ---------- */
+@media (max-width: 768px) {
+    .results-page {
+        /* Same side margin as the mobile home page */
+        --results-gutter: 24px;
+    }
+    .results-page .container-results {
+        padding: 0 var(--results-gutter);
+        align-items: center;
+    }
+    .results-page .container-results .h2-black {
+        text-align: center;
+    }
+    .results-page .section-map-sidebar {
+        padding: 30px var(--results-gutter) 40px;
+        gap: 30px;
+    }
+    .results-page .section-map-sidebar .results-list {
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    /* Cards fill the screen width between the margins */
+    .results-page .rest-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
 .rest-card-maps-link {
     display: inline-block;
     margin-top: 8px;
