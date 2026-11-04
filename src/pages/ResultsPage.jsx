@@ -70,7 +70,7 @@ export default function ResultsPage() {
 
     return (
         <div
-            className="page"
+            className="page results-page"
             style={{
                 width: '100vw',
             }}
