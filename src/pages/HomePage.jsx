@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 // import backgroundImage from '../assets/section-home.jpg'
 import backgroundImage from '../assets/banner_photo_5.png'
 import Reels from '../reels/reels' // adjust path if needed
+import MobileSearch from '../assets/MobileSearch/MobileSearch'
 
 import '../App.css'
 import TravelGuide from '../pages/TravelGuide'
@@ -108,7 +109,6 @@ export default function HomePage() {
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
                     backgroundSize: 'cover',
-                    height: '100vh',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     display: 'flex',
@@ -199,6 +199,29 @@ export default function HomePage() {
                             onClick={handleSearch}
                         />
                     </div>
+                    <MobileSearch
+                        cuisines={[
+                            'American',
+                            'Chinese',
+                            'Japanese',
+                            'Italian',
+                            'Korean',
+                            'Cafe',
+                            'Bakery',
+                            'Dessert',
+                            'Matcha',
+                        ]}
+                        cityDistrictMap={cityDistrictMap}
+                        cuisine={cuisine}
+                        setCuisine={setCuisine}
+                        city={city}
+                        setCity={setCity}
+                        district={district}
+                        setDistrict={setDistrict}
+                        price={price}
+                        setPrice={setPrice}
+                        onSearch={handleSearch}
+                    />
                 </div>
             </div>
             <div className="section-location">

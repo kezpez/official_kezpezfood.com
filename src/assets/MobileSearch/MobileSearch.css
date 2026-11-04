@@ -1,0 +1,227 @@
+/* Mobile-only search (pill + drop-down filter card). Hidden on desktop. */
+.mobile-search {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-search {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        font-family: 'Asap', Helvetica, sans-serif;
+    }
+
+    /* Long pill search bar */
+    .ms-pill {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 56px;
+        padding: 0 22px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 999px;
+        background: white;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+        cursor: pointer;
+        text-align: left;
+        font: inherit;
+        font-size: 16px;
+    }
+    .ms-search-icon {
+        flex-shrink: 0;
+        color: var(--main-green);
+    }
+    .ms-pill-hint {
+        color: #8a8a8a;
+    }
+    .ms-pill-value {
+        color: #1a1a1a;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Filter card */
+    .ms-panel {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 18px 18px 16px;
+        border-radius: 24px;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        text-align: left;
+        animation: ms-drop 0.18s ease-out;
+    }
+    @keyframes ms-drop {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .ms-label {
+        display: block;
+        margin: 0 0 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a1a;
+    }
+    .ms-label:not(:first-child) {
+        margin-top: 14px;
+    }
+
+    /* Dropdowns */
+    .ms-select-wrap {
+        position: relative;
+    }
+    .ms-select-wrap::after {
+        content: '';
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid #555;
+        border-bottom: 2px solid #555;
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none;
+    }
+    .ms-select {
+        width: 100%;
+        height: 44px;
+        padding: 0 44px 0 16px;
+        box-sizing: border-box;
+        border: 1px solid #d9d9e3;
+        border-radius: 14px;
+        background: #f7f7f9;
+        color: #1a1a1a;
+        font: inherit;
+        font-size: 16px; /* 16px stops iOS from zooming in */
+        appearance: none;
+        -webkit-appearance: none;
+    }
+    .ms-select:focus {
+        outline: none;
+        border-color: var(--main-green);
+    }
+
+    /* City radio dots */
+    .ms-radios {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+    }
+    .ms-radio {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        color: #1a1a1a;
+        cursor: pointer;
+    }
+    .ms-radio input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .ms-radio-dot {
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+        border: 2px solid #1a1a1a;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+    }
+    .ms-radio input:checked + .ms-radio-dot {
+        border-color: var(--main-green);
+    }
+    .ms-radio input:checked + .ms-radio-dot::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--main-green);
+    }
+    .ms-radio input:focus-visible + .ms-radio-dot {
+        outline: 2px solid var(--main-green);
+        outline-offset: 2px;
+    }
+
+    /* Price pills */
+    .ms-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .ms-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 38px;
+        padding: 0 22px;
+        border: 1px solid #c9c9d6;
+        border-radius: 999px;
+        background: white;
+        color: #1a1a1a;
+        font: inherit;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .ms-chip.is-selected {
+        padding-left: 12px;
+        background: var(--light-green);
+        border-color: var(--main-green);
+        color: var(--main-green);
+        font-weight: 600;
+    }
+    .ms-chip-check {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--main-green);
+        color: white;
+        display: grid;
+        place-items: center;
+    }
+
+    /* Back + Search, bottom right */
+    .ms-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 18px;
+    }
+    .ms-btn {
+        height: 44px;
+        padding: 0 24px;
+        border: none;
+        border-radius: 14px;
+        font: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .ms-btn-back {
+        background: #efeff3;
+        color: #1a1a1a;
+    }
+    .ms-btn-search {
+        background: var(--main-green);
+        color: white;
+    }
+    .ms-btn-search:active {
+        filter: brightness(0.92);
+    }
+}

@@ -195,6 +195,9 @@ h5 {
     justify-content: flex-start;
     width: 100%;
 }
+.home .section-home {
+    height: 100vh;
+}
 .HomePage .section-home {
     background-image: url('https://i.pinimg.com/736x/be/79/da/be79dad691f712c036b732e370314397.jpg');
     background-size: cover;
@@ -1401,40 +1404,62 @@ a {
         text-align: center;
     }
 
-    /* Hero + filter */
+    /* Hero: fills the phone screen, darkened so the title is readable,
+       title + search pill centered */
+    .home .section-home {
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        align-items: stretch !important;
+    }
+    .home .section-home::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.45) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.5) 100%
+        );
+        pointer-events: none;
+    }
     .home .section-home .container {
-        padding: 0 var(--home-gutter);
+        position: relative;
+        z-index: 1;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        /* top padding clears the fixed 60px nav so content centers in
+           the visible area */
+        padding: 84px var(--home-gutter) 32px;
+        justify-content: center;
         align-items: center;
+        overflow: visible;
     }
     .home .filter-title {
-        padding: 20px 0;
+        padding: 0 0 24px;
         align-items: center;
     }
     .home .one-line-diff-text {
         justify-content: center;
     }
-    .home .filter {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 12px 24px 20px;
-        border-radius: 24px;
-        gap: 4px;
+    .home .filter-title .outfit-font {
+        font-size: 36px !important;
+        line-height: 1.1;
     }
-    .home .filter select,
-    .home .filter select:focus {
-        width: 100%;
-        min-width: 0;
-        flex: none;
-        padding: 14px 10px;
-        text-align: center;
-        text-align-last: center;
-        /* No grey divider lines; a rule under each row instead */
-        border: none;
-        border-bottom: 1px solid #e0e0e0;
-        border-radius: 0;
+    /* While the filter card is open, drop the subtitle so the whole
+       card (with its Search button) stays on one screen */
+    .home .section-home .container:has(.mobile-search.is-open) .filter-title {
+        padding-bottom: 16px;
     }
-    .home .filter button {
-        margin-top: 12px;
+    .home .section-home .container:has(.mobile-search.is-open) .p2-white {
+        display: none;
+    }
+    /* Desktop filter bar is replaced by the pill search on mobile */
+    .home .section-home .filter {
+        display: none;
     }
 
     /* Where are you eating + Discover */
