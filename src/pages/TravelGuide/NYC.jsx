@@ -30,7 +30,7 @@ export default function NYC() {
 
     return (
         <div
-            className="page"
+            className="page travel-guide-page"
             style={{
                 width: '100vw',
             }}
@@ -39,8 +39,12 @@ export default function NYC() {
                 <div className="section-head-nyc-guide" style={sectionStyles}>
                     <div className="container">
                         <div className="div-title">
-                            <div className="big-title-white">NEW</div>
-                            <div className="big-title-white">YORK CITY</div>
+                            <div className="big-title-white guide-title">
+                                NEW
+                            </div>
+                            <div className="big-title-white guide-title">
+                                YORK CITY
+                            </div>
                             <p className="p2-white">
                                 Welcome to the Big Apple, New York City! There
                                 is so much to see and eat in the city that never
