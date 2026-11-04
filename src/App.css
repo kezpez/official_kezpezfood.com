@@ -1449,6 +1449,14 @@ a {
         font-size: 36px !important;
         line-height: 1.1;
     }
+    /* While the filter card is open, drop the subtitle so the whole
+       card (with its Search button) stays on one screen */
+    .home .section-home .container:has(.mobile-search.is-open) .filter-title {
+        padding-bottom: 16px;
+    }
+    .home .section-home .container:has(.mobile-search.is-open) .p2-white {
+        display: none;
+    }
     /* Desktop filter bar is replaced by the pill search on mobile */
     .home .section-home .filter {
         display: none;
