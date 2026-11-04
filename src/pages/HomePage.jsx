@@ -98,7 +98,7 @@ export default function HomePage() {
 
     return (
         <div
-            className="page"
+            className="page home"
             style={{
                 width: '100vw',
             }}
