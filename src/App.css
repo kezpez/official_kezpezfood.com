@@ -1522,6 +1522,59 @@ a {
     }
 }
 
+/* ---------- Travel guide pages (Food / See / Itineraries): mobile ---------- */
+@media (max-width: 768px) {
+    .itinerary-page {
+        /* Same side margin as the mobile home and results pages */
+        --guide-gutter: 24px;
+    }
+
+    /* Tabs stretch edge to edge between the margins */
+    .itinerary-page .section-tabs {
+        padding: 30px var(--guide-gutter) 0;
+    }
+    .itinerary-page .tabs {
+        width: 100%;
+    }
+    .itinerary-page .tab {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 12px 8px;
+    }
+
+    /* Green panel runs from the left edge of Food to the right edge of
+       Itineraries and joins the tabs with no gap */
+    .itinerary-page .trip-description {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 0 32px;
+        padding: 24px 20px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    /* Map + "Best food" dropdowns use the same margin as the tabs */
+    .itinerary-page .section-map-sidebar {
+        padding: 20px var(--guide-gutter) 40px;
+    }
+    .itinerary-page .sidebar .container {
+        padding: 0;
+    }
+    .itinerary-page .div-title-2 {
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+    .itinerary-page .div-dropdown {
+        padding: 20px 0;
+    }
+    .itinerary-page .section-dropdown {
+        padding: 0 var(--guide-gutter) 40px;
+    }
+    .itinerary-page .dropdown-itinerary {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
 .rest-card-maps-link {
     display: inline-block;
     margin-top: 8px;
