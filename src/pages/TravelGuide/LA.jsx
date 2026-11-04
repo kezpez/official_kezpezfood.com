@@ -29,7 +29,7 @@ export default function LA() {
 
     return (
         <div
-            className="page"
+            className="page travel-guide-page"
             style={{
                 width: '100vw',
             }}
@@ -38,8 +38,12 @@ export default function LA() {
                 <div className="section-head-nyc-guide" style={sectionStyles}>
                     <div className="container">
                         <div className="div-title">
-                            <div className="big-title-white">LOS</div>
-                            <div className="big-title-white">ANGELES</div>
+                            <div className="big-title-white guide-title">
+                                LOS
+                            </div>
+                            <div className="big-title-white guide-title">
+                                ANGELES
+                            </div>
                             <p className="p2-white">
                                 Welcome to the Los Angeles! Enjoy the beaches,
                                 sun, food, and shops!
@@ -116,7 +120,7 @@ export default function LA() {
                                 <div className="div-caption">
                                     <div className="h4-white">Yeems Coffee</div>
                                     <div className="text-wrapper">
-                                        <div className="p3-white">NYC</div>
+                                        <div className="p3-white">LA</div>
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +133,7 @@ export default function LA() {
                                 <div className="div-caption">
                                     <div className="h4-white">Sun Nong Dan</div>
                                     <div className="text-wrapper">
-                                        <div className="p3-white">NYC</div>
+                                        <div className="p3-white">LA</div>
                                     </div>
                                 </div>
                             </div>

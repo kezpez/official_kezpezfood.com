@@ -796,6 +796,14 @@ a {
     /* Padding inside div-title */
 }
 
+/* Travel guide hero title: same Kelsi font as the food guide headers */
+.big-title-white.guide-title {
+    font-family: 'Kelsi', sans-serif;
+    font-weight: normal;
+    font-size: 90px;
+    line-height: 1;
+}
+
 .section-city-rec {
     align-items: center;
     display: flex;
@@ -1597,6 +1605,112 @@ a {
     .itinerary-page .dropdown-itinerary {
         width: 100%;
         box-sizing: border-box;
+    }
+}
+
+/* ---------- Travel guide overview pages (NYC / LA): mobile ---------- */
+@media (max-width: 768px) {
+    .travel-guide-page {
+        /* Same side margin as the home, results and food guide pages */
+        --tg-gutter: 24px;
+    }
+
+    /* Hero: centered like the food guide header */
+    .travel-guide-page .section-head-nyc-guide .container {
+        padding: 0 var(--tg-gutter);
+        align-items: center;
+        justify-content: center;
+    }
+    .travel-guide-page .section-head-nyc-guide .div-title {
+        width: 100%;
+        padding: 0;
+        align-items: center;
+        text-align: center;
+    }
+    .travel-guide-page .big-title-white.guide-title {
+        font-size: 64px;
+        text-align: center;
+    }
+    .travel-guide-page .section-head-nyc-guide .p2-white {
+        text-align: center;
+        margin-top: 12px;
+    }
+
+    /* "Just for you" bubbles stay inside the margins */
+    .travel-guide-page .section-city-rec .div-city-rec {
+        gap: 32px;
+        padding: 50px var(--tg-gutter) 30px;
+        box-sizing: border-box;
+    }
+    .travel-guide-page .div-for-you {
+        width: 100%;
+        gap: 12px;
+        justify-content: space-between;
+    }
+    .travel-guide-page .div-icon-caption {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+    }
+
+    /* Hacks & tips and Popular visits fill the width between margins */
+    .travel-guide-page .section-tips {
+        flex-direction: column;
+        padding: 20px var(--tg-gutter) 40px;
+        gap: 40px;
+        height: auto;
+    }
+    .travel-guide-page .section-tips .container-hacks {
+        width: 100%;
+        padding: 24px 20px;
+    }
+    .travel-guide-page .container-pop-visit .div-title-2 {
+        padding: 0 0 12px;
+        position: static;
+    }
+    .travel-guide-page .container-images {
+        flex-direction: column;
+        gap: 20px;
+    }
+    /* Square photos */
+    .travel-guide-page .section-tips .image-cover {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    /* Map + itinerary: centered and inside the same margins */
+    .travel-guide-page .section-map-sidebar {
+        padding: 20px var(--tg-gutter) 50px;
+        gap: 20px;
+    }
+    .travel-guide-page .sidebar .container {
+        padding: 0;
+        align-items: stretch;
+    }
+    .travel-guide-page .sidebar .div-title-2 {
+        padding: 20px 0;
+        box-sizing: border-box;
+    }
+    .travel-guide-page .container-itinerary {
+        height: auto;
+        overflow: visible;
+    }
+    .travel-guide-page .div-itinerary-card {
+        height: auto;
+        overflow: visible;
+        padding: 24px 20px;
+    }
+    .travel-guide-page .div-itinerary-card .it-card {
+        width: 100%;
+    }
+    .travel-guide-page .sidebar .div-buttons {
+        display: flex;
+        justify-content: center;
+        padding: 8px 0 0;
     }
 }
 
