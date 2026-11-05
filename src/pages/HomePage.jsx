@@ -25,6 +25,34 @@ export default function HomePage() {
     const [price, setPrice] = useState('')
     const navigate = useNavigate()
     const [cuisines, setCuisines] = useState([])
+
+    // Cuisine options come from the restaurants table, so new cuisines
+    // show up in the dropdowns automatically. A value like
+    // "Korean, Japanese" adds both, and "korean"/"Korean" count once.
+    useEffect(() => {
+        const loadCuisines = async () => {
+            const { data, error } = await supabase
+                .from('restaurants')
+                .select('cuisine')
+
+            if (error) {
+                console.error('Could not load cuisines:', error)
+                return
+            }
+
+            const byKey = new Map()
+            for (const row of data ?? []) {
+                for (const part of (row.cuisine ?? '').split(',')) {
+                    const name = part.trim()
+                    const key = name.toLowerCase()
+                    if (name && !byKey.has(key)) byKey.set(key, name)
+                }
+            }
+            setCuisines([...byKey.values()].sort((a, b) => a.localeCompare(b)))
+        }
+
+        loadCuisines()
+    }, [])
     const cityDistrictMap = {
         LA: [
             'Koreatown',
@@ -143,21 +171,11 @@ export default function HomePage() {
                             onChange={(e) => setCuisine(e.target.value)}
                         >
                             <option value="">Select Cuisine</option>
-                            <option value="American">American</option>
-                            <option value="Chinese">Chinese</option>
-                            <option value="Japanese">Japanese</option>
-                            <option value="Italian">Italian</option>
-                            <option value="Korean">Korean</option>
-                            <option value="Cafe">Cafe</option>
-                            <option value="Bakery">Bakery</option>
-                            <option value="Dessert">Dessert</option>
-                            <option value="Matcha">Matcha</option>
-
-                            {/* {cuisines.map((c) => (
-                                <option key={c.id} value={c.name}>
-                                    {c.name}
+                            {cuisines.map((c) => (
+                                <option key={c} value={c}>
+                                    {c}
                                 </option>
-                            ))} */}
+                            ))}
                         </select>
 
                         <select
@@ -200,17 +218,7 @@ export default function HomePage() {
                         />
                     </div>
                     <MobileSearch
-                        cuisines={[
-                            'American',
-                            'Chinese',
-                            'Japanese',
-                            'Italian',
-                            'Korean',
-                            'Cafe',
-                            'Bakery',
-                            'Dessert',
-                            'Matcha',
-                        ]}
+                        cuisines={cuisines}
                         cityDistrictMap={cityDistrictMap}
                         cuisine={cuisine}
                         setCuisine={setCuisine}
